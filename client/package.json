@@ -1,0 +1,35 @@
+{
+  "name": "svelte_project",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "proxy": "http://localhost:5000",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json"
+  },
+  "devDependencies": {
+    "@rgossiaux/svelte-headlessui": "^1.0.2",
+    "@sveltejs/vite-plugin-svelte": "^2.0.0",
+    "@tsconfig/svelte": "^3.0.0",
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.14",
+    "postcss-load-config": "^4.0.1",
+    "svelte": "^3.54.0",
+    "svelte-check": "^2.10.0",
+    "svelte-preprocess": "^4.10.7",
+    "tailwindcss": "^3.1.5",
+    "tslib": "^2.4.1",
+    "typescript": "^4.9.3",
+    "vite": "^4.0.0"
+  },
+  "dependencies": {
+    "@types/react-icons": "^3.0.0",
+    "daisyui": "^2.46.1",
+    "svelte-icons": "^2.1.0",
+    "svelte-routing": "^1.6.0",
+    "theme-change": "^2.3.0"
+  }
+}
