@@ -3,7 +3,7 @@
   import { onMount } from "svelte";
   import NavBar from "../lib/NavBar.svelte";
   import RecipeContainer from "../lib/RecipeContainer.svelte";
-  import SingleRecipePage from "../lib/SingleRecipePage.svelte";
+  import SingleRecipePage from "./SingleRecipePage.svelte";
 
   interface Recipe {
     _id?: String;

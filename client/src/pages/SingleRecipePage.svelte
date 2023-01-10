@@ -2,7 +2,7 @@
   import axios from "axios";
   import { onMount } from "svelte";
   import noImage from "../assets/no_image.png";
-  import NavBar from "./NavBar.svelte";
+  import NavBar from "../lib/NavBar.svelte";
 
   export let recipe: Recipe;
 

@@ -1,26 +1,27 @@
 <script lang="ts">
   import axios from "axios";
   import { Link } from "svelte-routing";
+  import { storeData } from "../stores";
 
   let username: string;
   let password: string;
-  let isLoggedIn: Boolean = false
+
   function submit() {
     console.log(username, password);
     axios
       .post("/api/user/login", { username: username, password: password })
-      .then((res) => isLoggedIn = true)
+      .then((res) => (  $storeData.loggedIn = true))
       .catch((err) => console.log(err));
   }
-  
 </script>
 
 <main>
+  {#if !$storeData.loggedIn}
+    
+ 
   <form class="mx-auto w-full max-w-xs" on:submit|preventDefault={submit}>
     <div class="mb-4">
-      <label class="block label" for="username">
-        Username
-      </label>
+      <label class="block label" for="username"> Username </label>
       <input
         class="input input-bordered label-text text-center"
         id="username"
@@ -31,9 +32,7 @@
     </div>
 
     <div class="mb-6">
-      <label class="block label" for="password">
-        Password
-      </label>
+      <label class="block label" for="password"> Password </label>
       <input
         class="input input-bordered label-text text-center"
         id="password"
@@ -43,15 +42,14 @@
       />
     </div>
     <div>
-      <Link class="text-white" to="/"> 
-      <button
-        class="btn"
-        type="submit"
-      >
-      Login
-      
-      </button>
-    </Link>
+        <button class="btn" type="submit"> Login </button>
     </div>
   </form>
+  {:else}
+  <Link to="homepage">
+    <p class="p-0 link">Return to homepage</p>
+   </Link>
+
+
+  {/if}
 </main>
