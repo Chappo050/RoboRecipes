@@ -3,8 +3,7 @@
   import { onMount } from "svelte";
   import NavBar from "../lib/NavBar.svelte";
   import RecipeContainer from "../lib/RecipeContainer.svelte";
-  import SingleRecipePage from "./SingleRecipePage.svelte";
-
+  import Footer from "../lib/Footer.svelte";
   interface Recipe {
     _id?: String;
     name: string;
@@ -24,14 +23,13 @@
 <main>
   <NavBar />
   <h1 class="heading text-5xl pt-16 ">Profile</h1>
-  <p />
-
+  <h2 class="text-2xl p-4">Please generate recipies and the ones you save will be displayed here!</h2>
   <body class="place-items-baseline">
     <div>
-      <h2 class="text-2xl p-4">Saved recipes</h2>
       {#if recipes}
         <RecipeContainer {recipes} showSettings={true} />
       {/if}
     </div>
   </body>
+  <Footer/>
 </main>

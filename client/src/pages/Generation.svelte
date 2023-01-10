@@ -4,7 +4,7 @@
   import NewRecipe from "../lib/NewRecipe.svelte";
   let isGenerating;
   let recipeData
-
+  import Footer from "../lib/Footer.svelte";
 </script>
 
 <main>
@@ -16,4 +16,5 @@
     {/if}
     <GenerateButton bind:isGenerating={isGenerating} bind:recipeData={recipeData}/>
   </span>
+  <Footer/>
 </main>

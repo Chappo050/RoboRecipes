@@ -3,7 +3,7 @@
   import { onMount } from "svelte";
   import NavBar from "../lib/NavBar.svelte";
   import HomeCarousel from "../lib/HomeCarousel.svelte";
-
+import Footer from "../lib/Footer.svelte";
   let recipes: Recipe[];
 
   onMount(async () => {
@@ -14,7 +14,7 @@
   });
 </script>
 
-<main class="n">
+<main class="">
   <NavBar />
   <h1 class="text-3xl font-bold mb-4">Welcome to the Robo Recipes</h1>
   <div class="hero ">
@@ -33,4 +33,6 @@
       </div>
     </div>
   </div>
+  <Footer/>
 </main>
+

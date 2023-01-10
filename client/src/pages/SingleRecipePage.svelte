@@ -3,7 +3,7 @@
   import { onMount } from "svelte";
   import noImage from "../assets/no_image.png";
   import NavBar from "../lib/NavBar.svelte";
-
+  import Footer from "../lib/Footer.svelte";
   export let recipe: Recipe;
 
 
@@ -57,4 +57,5 @@ const recipeID: String = window.location.pathname.split('/')[2]
   {:else}
     <progress class="progress w-52" />
   {/if}
+  <Footer/>
 </main>

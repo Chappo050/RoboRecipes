@@ -6,6 +6,7 @@
   import DiAptana from "svelte-icons/di/DiAptana.svelte";
   import { Link } from "svelte-routing";
   import { storeData } from "../stores";
+
   function handleLogout() {
     axios
       .get("/api/user/logout")
@@ -13,11 +14,22 @@
       .catch((err) => console.log(err));
   }
 
-  onMount(() => {
+  onMount(async () => {
     themeChange(false);
-    console.log($storeData);
-
+    await axios
+      .get("/api/user/auth")
+      .then((res) => handleAuth())
+      .catch((err) => console.log(err));
     // 👆 false parameter is required for svelte
+  });
+
+
+  function handleAuth() {
+$storeData.loggedIn = true;
+  }
+
+  onMount(async() => {
+
   });
 </script>
 
