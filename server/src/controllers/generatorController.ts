@@ -49,12 +49,12 @@ export const newRecipe = async (req, res, next) => {
     //get image URL from openAI
     image = await asyncFetchFunctionForImage(req.query.prompt);
     const res = await axios.get(image, { responseType: "arraybuffer" });
-    const blob = await Buffer.from(res.data);
+    const blob = await Buffer.from(res.data,'binary').toString('base64');
     console.log(blob);
     
     //save image to server
     const randomID: string = (Math.random() * 10000).toFixed(0).toString();
-   const uploadedImage = await s31
+   const uploadedImage = await s3
         .upload({
           Body: blob,
           Bucket: "mlc-roborecipies",
