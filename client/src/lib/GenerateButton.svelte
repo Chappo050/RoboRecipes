@@ -83,17 +83,3 @@
   </form>
 </main>
 
-<style>
-  @keyframes rotate {
-    from {
-      transform: scale(1);
-    }
-    to {
-      transform: scale(1.5);
-    }
-  }
-
-  .loading {
-    animation: pulse 1s ease-in-out infinite;
-  }
-</style>
