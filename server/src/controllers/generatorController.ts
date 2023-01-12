@@ -48,7 +48,8 @@ export const newRecipe = async (req, res, next) => {
     download.image({
       url: image,
       dest:
-        "/home/matthew/Desktop/javascript/Projects/svelte_project/server/public/images/" +
+     //Local   "/home/matthew/Desktop/javascript/Projects/svelte_project/server/public/images/" +
+     "./public/images/" + //Production
         req.query.prompt +
         randomID +
         ".png",

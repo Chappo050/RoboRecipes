@@ -9,7 +9,7 @@
     "server": "ts-node ./server/src/app",
     "local": "nodemon ./src/app.ts",
     "develop": "concurrently --kill-others-on-fail \"npm run server\" \" cd ../ && npm run dev --prefix client\"",
-    "start": "concurrently --kill-others-on-fail \"npm run server\" \"cd ../ && npm run dev --prefix client\""
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \" npm run dev --prefix client\""
   },
   "engines": {
     "node": "18.6.0"
@@ -40,7 +40,8 @@
     "nodemon": "^2.0.19",
     "openai": "^3.1.0",
     "passport": "^0.6.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
     "@types/bcrypt": "^10.0.28-alpha",
