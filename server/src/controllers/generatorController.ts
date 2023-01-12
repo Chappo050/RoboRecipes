@@ -1,5 +1,5 @@
 import axios from "axios";
-const AWS= require('aws-sdk');
+import AWS from "aws-sdk";
 const { Configuration, OpenAIApi } = require("openai");
 const download = require("image-downloader");
 const configuration = new Configuration({
