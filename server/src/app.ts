@@ -73,7 +73,7 @@ app.use(compression()); //Compress all routes
 
 
 // Local app.use(express.static(path.join(__dirname, "client", "build")));
-app.use(express.static(path.join(__dirname, "..", "client", "dist"))); //heroku
+app.use(express.static(path.join(__dirname,"..", "..", "client", "dist"))); //heroku
 app.use('/images', express.static(path.join(__dirname, "public", "images")))
 
 
@@ -89,7 +89,7 @@ app.get("/*", function (req, res) {
  
    // Set custom headers for CORS
   res.header('Access-Control-Allow-Headers', 'Content-type,Accept,X-Access-Token,X-Key')
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  res.sendFile(path.join(__dirname,"..", "..", "client", "build", "index.html"));
 });
 
 
