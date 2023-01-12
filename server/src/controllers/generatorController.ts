@@ -1,5 +1,4 @@
 import axios from "axios";
-//@ts-ignore
 
 const AWS = require('aws-adk');
 const { Configuration, OpenAIApi } = require("openai");
