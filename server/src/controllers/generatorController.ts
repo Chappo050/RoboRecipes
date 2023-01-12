@@ -49,7 +49,7 @@ export const newRecipe = async (req, res, next) => {
       url: image,
       dest:
      //Local   "/home/matthew/Desktop/javascript/Projects/svelte_project/server/public/images/" +
-     "./public/images/" + //Production
+     "../public/images/" + //Production
         req.query.prompt +
         randomID +
         ".png",
@@ -57,7 +57,7 @@ export const newRecipe = async (req, res, next) => {
     });
 
     //add reachable URL
-    serverURL ="http://localhost:5000/images/" + req.query.prompt + randomID + ".png";
+    serverURL ="https://tranquil-hamlet-26805.herokuapp.com/images/" + req.query.prompt + randomID + ".png";
   } else {
     console.log("fetching no image");
     image = "no_image.png";
