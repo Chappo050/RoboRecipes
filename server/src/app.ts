@@ -71,9 +71,10 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(compression()); //Compress all routes
 
-app.use('/images', express.static('public/images'))
+
 // Local app.use(express.static(path.join(__dirname, "client", "build")));
-app.use( '/build', express.static(path.join(__dirname, "client", "dist/index.html"))); //heroku
+app.use(express.static(path.join(__dirname, "..", "client", "dist"))); //heroku
+app.use('/images', express.static(path.join(__dirname, "public", "images")))
 
 
 //ROUTES
