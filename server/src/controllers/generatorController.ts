@@ -54,7 +54,7 @@ export const newRecipe = async (req, res, next) => {
     
     //save image to server
     const randomID: string = (Math.random() * 10000).toFixed(0).toString();
-   const uploadedImage = await s3
+   const uploadedImage = await s31
         .upload({
           Body: blob,
           Bucket: "mlc-roborecipies",
