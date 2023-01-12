@@ -22,7 +22,7 @@ import noImage from "../assets/no_image.png";
         
           <img
             class="w-[450px] rounded-lg shadow-lg h-[400px] mx-auto "
-            src={recipe.imageUrl}
+            src={"data:image/png:base64," + recipe.imageUrl}
             alt={recipe.name}
           />
         {:else}
