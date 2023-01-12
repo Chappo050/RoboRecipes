@@ -1,11 +1,16 @@
-import test from "node:test";
-
+import axios from "axios";
+import AWS from "aws-sdk";
+import { response } from "express";
 const { Configuration, OpenAIApi } = require("openai");
 const download = require("image-downloader");
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
+const s3 = new AWS.S3({
+  accessKeyId: process.env.AWS_ACCESS,
+  secretAccessKey: process.env.AWS_SECRET,
+});
 
 async function asyncFetchFunctionForRecipe(prompt: string): Promise<Object> {
   const results = await openai.createCompletion({
@@ -41,15 +46,30 @@ export const newRecipe = async (req, res, next) => {
   if (useDALLE === "true") {
     console.log("fetching image with DALL E.");
 
+    //get image URL from openAI
     image = await asyncFetchFunctionForImage(req.query.prompt);
-
+    const res = await axios.get(image, { responseType: "arraybuffer" });
+    const blob = await Buffer.from(res.data);
+    console.log(blob);
+    
     //save image to server
     const randomID: string = (Math.random() * 10000).toFixed(0).toString();
+   const uploadedImage = await s3
+        .upload({
+          Body: blob,
+          Bucket: "mlc-roborecipies",
+          Key: req.query.prompt + randomID + ".png",
+        })
+        .promise();
+    ;
+
+    //Local stuff
+    /*
     download.image({
       url: image,
       dest:
-     //Local   "/home/matthew/Desktop/javascript/Projects/svelte_project/server/public/images/" +
-     "../public/images/" + //Production
+        //Local   "/home/matthew/Desktop/javascript/Projects/svelte_project/server/public/images/" +
+        "../public/images/" + //Production
         req.query.prompt +
         randomID +
         ".png",
@@ -57,7 +77,17 @@ export const newRecipe = async (req, res, next) => {
     });
 
     //add reachable URL
-    serverURL ="https://tranquil-hamlet-26805.herokuapp.com/images/" + req.query.prompt + randomID + ".png";
+    serverURL =
+      "https://tranquil-hamlet-26805.herokuapp.com/images/" +
+      req.query.prompt +
+      randomID +
+      ".png";
+      */
+
+      serverURL =
+      uploadedImage.Location
+      console.log(serverURL);
+      
   } else {
     console.log("fetching no image");
     image = "no_image.png";
