@@ -1,12 +1,13 @@
 import axios from "axios";
-import S3 from 'aws-sdk/clients/s3';
+// import individual service
+import * as AWS from 'aws-sdk'
 const { Configuration, OpenAIApi } = require("openai");
 const download = require("image-downloader");
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
-const s3 = new S3({
+const s3 = new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS,
   secretAccessKey: process.env.AWS_SECRET,
 });
