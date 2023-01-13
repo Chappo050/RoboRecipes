@@ -48,18 +48,7 @@ const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 //Middleware
-app.use(cors({ origin: "*", credentials: true }));
-app.use(
-  Helmet({
-    contentSecurityPolicy: {
-      directives: {
-        "img-src": ["'self'", "https://", "*.amazonaws.com", "*.oaidalleapiprodscus.blob.core.windows.net"],
-      },
-    },
-  })
-);
-app.use(crossOriginResourcePolicy({policy: "cross-origin"}))
-
+app.use(cors());
 
 app.use(flash());
 if (process.env.SESSION_SECRET) {
