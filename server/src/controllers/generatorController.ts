@@ -76,15 +76,15 @@ export const newRecipe = async (req, res, next) => {
         .promise();
     ;
 
-      serverURL =
-     await s3.getObject(params).promise().toString()
-      console.log(serverURL);
+    serverURL =
+    "https://mlc-roborecipies.s3.ap-northeast-1.amazonaws.com/" + req.query.prompt + randomID + ".png",
       
   } else {
     console.log("fetching no image");
     image = "no_image.png";
     serverURL = "no_image.png";
   }
+
 
   res.json({ text: data, image: serverURL, tempImage: image });
 };
