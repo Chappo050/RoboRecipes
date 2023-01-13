@@ -1,17 +1,16 @@
 import axios from "axios";
 // import individual service
-
+import S3 from 'aws-sdk/clients/s3';
 const { Configuration, OpenAIApi } = require("openai");
 const download = require("image-downloader");
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
-
-//const s3 = new AWS.S3({
-//  accessKeyId: process.env.AWS_ACCESS,
-//  secretAccessKey: process.env.AWS_SECRET,
-//});
+const s3 = new S3({
+  accessKeyId: process.env.AWS_ACCESS,
+  secretAccessKey: process.env.AWS_SECRET,
+});
 async function asyncFetchFunctionForRecipe(prompt: string): Promise<Object> {
   const results = await openai.createCompletion({
     model: "text-davinci-003",
@@ -54,14 +53,14 @@ export const newRecipe = async (req, res, next) => {
     
     //save image to server
     const randomID: string = (Math.random() * 10000).toFixed(0).toString();
-  // const uploadedImage = await s3
-   //     .upload({
-    //      Body: blob,
-     //     Bucket: "mlc-roborecipies",
-     //     Key: req.query.prompt + randomID + ".png",
-    //    })
-    //    .promise();
-   // ;
+   const uploadedImage = await s3
+        .upload({
+          Body: blob,
+          Bucket: "mlc-roborecipies",
+          Key: req.query.prompt + randomID + ".png",
+        })
+        .promise();
+    ;
 
     //Local stuff
     /*
@@ -84,9 +83,9 @@ export const newRecipe = async (req, res, next) => {
       ".png";
       */
 
-     serverURL = "2"
-    // uploadedImage.Location
- //     console.log(serverURL);
+      serverURL =
+      uploadedImage.Location
+      console.log(serverURL);
       
   } else {
     console.log("fetching no image");
