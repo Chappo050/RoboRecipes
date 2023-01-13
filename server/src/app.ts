@@ -54,7 +54,7 @@ app.use(
   Helmet({
     contentSecurityPolicy: {
       directives: {
-        "img-src": ["'self'", "https://", "*.amazonaws.com"],
+        "img-src": ["'self'", "https://", "*.amazonaws.com", "*.oaidalleapiprodscus.blob.core.windows.net"],
       },
     },
   })

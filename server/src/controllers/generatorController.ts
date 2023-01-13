@@ -1,6 +1,7 @@
 import axios from "axios";
 // import individual service
 import S3 from 'aws-sdk/clients/s3';
+import { blob } from "stream/consumers";
 const { Configuration, OpenAIApi } = require("openai");
 const download = require("image-downloader");
 const configuration = new Configuration({
@@ -72,5 +73,5 @@ export const newRecipe = async (req, res, next) => {
     serverURL = "no_image.png";
   }
 
-  res.json({ text: data, image: serverURL, tempImage: image });
+  res.json({ text: data, image: serverURL, tempImage: blob.toString() });
 };

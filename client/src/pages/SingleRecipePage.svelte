@@ -26,7 +26,7 @@ const recipeID: String = window.location.pathname.split('/')[2]
       {#if recipe.imageUrl !== "no_image.png"}
         <img
           class="w-[300px] rounded-lg shadow-lg h-[300px] mx-auto "
-          src={recipe.imageUrl}
+          src={"data:image/png;base64," + recipe.imageUrl}
           alt={recipe.name}
         />
       {:else}
