@@ -19,7 +19,6 @@ import Footer from "../lib/Footer.svelte";
   <h1 class="text-3xl font-bold mb-4">Welcome to the Robo Recipes</h1>
   <div class="hero ">
     <div class="hero-content flex-col">
-
       <p class=" mb-8">
         Here you will find a collection of delicious recipes that have been hand
         made by AI (chatGPT3).

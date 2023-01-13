@@ -1,6 +1,5 @@
 import axios from "axios";
 import S3 from 'aws-sdk/clients/s3';
-
 const { Configuration, OpenAIApi } = require("openai");
 const download = require("image-downloader");
 const configuration = new Configuration({
@@ -11,7 +10,6 @@ const s3 = new S3({
   accessKeyId: process.env.AWS_ACCESS,
   secretAccessKey: process.env.AWS_SECRET,
 });
-
 async function asyncFetchFunctionForRecipe(prompt: string): Promise<Object> {
   const results = await openai.createCompletion({
     model: "text-davinci-003",
