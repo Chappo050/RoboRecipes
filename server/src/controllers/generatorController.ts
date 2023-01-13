@@ -42,14 +42,14 @@ export const newRecipe = async (req, res, next) => {
   let serverURL: String;
 
   //why is JS so stupid?
-  let blob;
+
   if (useDALLE === "true") {
     console.log("fetching image with DALL E.");
 
     //get image URL from openAI
     image = await asyncFetchFunctionForImage(req.query.prompt);
     const res = await axios.get(image, { responseType: "arraybuffer" });
-    blob = await Buffer.from(res.data,'binary').toString('base64');
+   const blob = await Buffer.from(res.data);
     
     //save image to server
     const randomID: string = (Math.random() * 10000).toFixed(0).toString();
@@ -72,5 +72,5 @@ export const newRecipe = async (req, res, next) => {
     serverURL = "no_image.png";
   }
 
-  res.json({ text: data, image: serverURL, tempImage: blob });
+  res.json({ text: data, image: serverURL, tempImage: image });
 };
