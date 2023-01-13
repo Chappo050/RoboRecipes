@@ -8,6 +8,7 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 const s3 = new S3({
+  region: 'ap-northeat-1',
   accessKeyId: process.env.AWS_ACCESS,
   secretAccessKey: process.env.AWS_SECRET,
 });
@@ -53,6 +54,10 @@ export const newRecipe = async (req, res, next) => {
     
     //save image to server
     const randomID: string = (Math.random() * 10000).toFixed(0).toString();
+    const params = {
+      Key: req.query.prompt + randomID + ".png",
+      Bucket:"mlc-roborecipies",
+    }
    const uploadedImage = await s3
         .putObject({
           ContentEncoding: 'base64',
@@ -72,7 +77,7 @@ export const newRecipe = async (req, res, next) => {
     ;
 
       serverURL =
-     await s3.getObject({Bucket:"mlc-roborecipies", Key: (req.query.prompt + randomID + ".png")}).promise().toString()
+     await s3.getObject(params).promise().toString()
       console.log(serverURL);
       
   } else {
