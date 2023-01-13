@@ -54,10 +54,19 @@ export const newRecipe = async (req, res, next) => {
     //save image to server
     const randomID: string = (Math.random() * 10000).toFixed(0).toString();
    const uploadedImage = await s3
-        .upload({
+        .putObject({
+          ContentEncoding: 'base64',
+          ContentType: 'image/png',
           Body: blob,
           Bucket: "mlc-roborecipies",
           Key: req.query.prompt + randomID + ".png",
+        }, function (err, data) {
+          if (err) {
+            console.log("error in uploading file");
+          }
+          if (data) {
+            console.log("Upload Success", data);
+          }
         })
         .promise();
     ;
