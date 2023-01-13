@@ -54,14 +54,16 @@ app.use(
     directives: {
       defaultSrc: [
         "'self'",
+        "https://tranquil-hamlet-26805.herokuapp.com/",
         "https://mlc-roborecipies.s3.ap-northeast-1.amazonaws.com/",
       ],
-      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'",  "https://mlc-roborecipies.s3.ap-northeast-1.amazonaws.com/"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://tranquil-hamlet-26805.herokuapp.com/",  "https://mlc-roborecipies.s3.ap-northeast-1.amazonaws.com/"],
       connectSrc: [
+        "https://tranquil-hamlet-26805.herokuapp.com/",
         "https://mlc-roborecipies.s3.ap-northeast-1.amazonaws.com/",
       ],
-      styleSrc: ["'self'", "'unsafe-inline'", "https://mlc-roborecipies.s3.ap-northeast-1.amazonaws.com/"],
-      imgSrc: ["https://mlc-roborecipies.s3.ap-northeast-1.amazonaws.com/"],
+      styleSrc: ["'self'", "'unsafe-inline'",  "https://tranquil-hamlet-26805.herokuapp.com/", "https://mlc-roborecipies.s3.ap-northeast-1.amazonaws.com/"],
+      imgSrc: ["https://mlc-roborecipies.s3.ap-northeast-1.amazonaws.com/",  "https://tranquil-hamlet-26805.herokuapp.com/"],
     },
   })
 );
