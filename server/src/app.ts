@@ -52,7 +52,12 @@ app.use(cors("*"));
 app.use(Helmet());
 app.use(
   Helmet({
-    contentSecurityPolicy: false,
+    contentSecurityPolicy: {
+      directives: {
+        ...Helmet.contentSecurityPolicy.getDefaultDirectives(),
+        "img-src": ["'self'", "s3.amazonaws.com"],
+      },
+    },
   })
 );
 
