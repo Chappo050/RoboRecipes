@@ -18,7 +18,6 @@ import Footer from "../lib/Footer.svelte";
   <NavBar />
   <h1 class="text-3xl font-bold mb-4">Welcome to the Robo Recipes</h1>
   <div class="hero ">
-    <img src="https://mlc-roborecipies.s3.ap-northeast-1.amazonaws.com/Chocolate+chip+cookie+recipe3254.png" />
     <div class="hero-content flex-col">
       <p class=" mb-8">
         Here you will find a collection of delicious recipes that have been hand
