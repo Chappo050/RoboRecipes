@@ -16,7 +16,7 @@
 {#if recipe.tempImage !== "no_image.png"}
    <img
     class="w-[300px] rounded-lg shadow-lg h-[300px] mx-auto "
-    src={recipe.tempImage}
+    src={"data:image/png;base64," + recipe.tempImage}
     alt={recipe.name}
   />
   {:else}
