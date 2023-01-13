@@ -55,33 +55,12 @@ export const newRecipe = async (req, res, next) => {
     const randomID: string = (Math.random() * 10000).toFixed(0).toString();
    const uploadedImage = await s3
         .upload({
-          Body: blob,
+          Body: image,
           Bucket: "mlc-roborecipies",
           Key: req.query.prompt + randomID + ".png",
         })
         .promise();
     ;
-
-    //Local stuff
-    /*
-    download.image({
-      url: image,
-      dest:
-        //Local   "/home/matthew/Desktop/javascript/Projects/svelte_project/server/public/images/" +
-        "../public/images/" + //Production
-        req.query.prompt +
-        randomID +
-        ".png",
-      extractFilename: false,
-    });
-
-    //add reachable URL
-    serverURL =
-      "https://tranquil-hamlet-26805.herokuapp.com/images/" +
-      req.query.prompt +
-      randomID +
-      ".png";
-      */
 
       serverURL =
       uploadedImage.Location
