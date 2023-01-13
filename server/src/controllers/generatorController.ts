@@ -72,7 +72,7 @@ export const newRecipe = async (req, res, next) => {
     ;
 
       serverURL =
-      uploadedImage.Location
+      s3.getObject({Bucket:"mlc-roborecipies", Key: (req.query.prompt + randomID + ".png")}).promise().toString()
       console.log(serverURL);
       
   } else {
