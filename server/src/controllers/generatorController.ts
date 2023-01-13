@@ -77,7 +77,7 @@ export const newRecipe = async (req, res, next) => {
     ;
 
     serverURL =
-    "https://mlc-roborecipies.s3.ap-northeast-1.amazonaws.com/" + req.query.prompt + randomID + ".png",
+    "https://mlc-roborecipies.s3.ap-northeast-1.amazonaws.com/" + req.query.prompt + randomID + ".png"
       
   } else {
     console.log("fetching no image");
