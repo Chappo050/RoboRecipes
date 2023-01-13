@@ -48,26 +48,8 @@ const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 //Middleware
-app.use(cors("URL ALLOWED"));
+app.use(cors("*"));
 app.use(Helmet());
-app.use(
-  Helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: [
-        "'self'",
-        "https://tranquil-hamlet-26805.herokuapp.com/",
-        "https://mlc-roborecipies.s3.ap-northeast-1.amazonaws.com/",
-      ],
-      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://tranquil-hamlet-26805.herokuapp.com/",  "https://mlc-roborecipies.s3.ap-northeast-1.amazonaws.com/"],
-      connectSrc: [
-        "https://tranquil-hamlet-26805.herokuapp.com/",
-        "https://mlc-roborecipies.s3.ap-northeast-1.amazonaws.com/",
-      ],
-      styleSrc: ["'self'", "'unsafe-inline'",  "https://tranquil-hamlet-26805.herokuapp.com/", "https://mlc-roborecipies.s3.ap-northeast-1.amazonaws.com/"],
-      imgSrc: ["https://mlc-roborecipies.s3.ap-northeast-1.amazonaws.com/",  "https://tranquil-hamlet-26805.herokuapp.com/"],
-    },
-  })
-);
 app.use(
   Helmet({
     contentSecurityPolicy: false,
