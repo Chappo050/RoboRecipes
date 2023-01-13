@@ -88,7 +88,7 @@ app.get("/*", function (req, res) {
  
    // Set custom headers for CORS
   res.header('Access-Control-Allow-Headers', 'Content-type,Accept,X-Access-Token,X-Key')
-  res.sendFile(path.join(__dirname,"..", "..", "client", "build", "index.html"));
+  res.sendFile(path.join(__dirname,"..", "..", "client", "dist", "index.html"));
 });
 
 
