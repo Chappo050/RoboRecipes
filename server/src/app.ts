@@ -49,6 +49,25 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 //Middleware
 app.use(Helmet());
+app.use(
+  Helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: [
+        "'self'",
+        "https://glacial-tor-64648.herokuapp.com/graphql",
+        "https://mlc-roborecipies.s3.ap-northeast-1.amazonaws.com/",
+      ],
+      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'",  "https://mlc-roborecipies.s3.ap-northeast-1.amazonaws.com/"],
+      connectSrc: [
+        "https://bing-news-search1.p.rapidapi.com/news",
+        "https://mlc-roborecipies.s3.ap-northeast-1.amazonaws.com/",
+        "https://glacial-tor-64648.herokuapp.com/graphql",
+      ],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://mlc-roborecipies.s3.ap-northeast-1.amazonaws.com/"],
+      imgSrc: ["https://mlc-roborecipies.s3.ap-northeast-1.amazonaws.com/"],
+    },
+  })
+);
 app.use(cors("*"));
 app.use(crossOriginResourcePolicy({policy: "cross-origin"}))
 app.use(flash());
