@@ -8,7 +8,7 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 const s3 = new S3({
-  region: 'ap-northeat-1',
+  region: 'ap-northeast-1',
   accessKeyId: process.env.AWS_ACCESS,
   secretAccessKey: process.env.AWS_SECRET,
 });
