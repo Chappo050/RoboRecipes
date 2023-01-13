@@ -84,9 +84,9 @@ export const newRecipe = async (req, res, next) => {
       ".png";
       */
 
-      serverURL =
-      uploadedImage.Location
-      console.log(serverURL);
+     serverURL = "2"
+    // uploadedImage.Location
+ //     console.log(serverURL);
       
   } else {
     console.log("fetching no image");
