@@ -21,7 +21,7 @@
   />
   {:else}
   <img
-  class="w-[300px] rounded-lg shadow-lg h-[300px] mx-auto "
+  class="w-[450px] rounded-lg shadow-lg h-[400px] mx-auto "
   src={noImage}
   alt={recipe.name}
 />

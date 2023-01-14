@@ -1,10 +1,12 @@
 <script lang="ts">
   import axios from "axios";
+  import { Link } from "svelte-routing";
   export let isGenerating = false;
   export let recipeData;
 
   let prompt = "Chocolate chip cookie recipe";
   let isLoading = false;
+  let hasFetched = false;
   let fetchImage = false;
 
   function generateRecipe() {
@@ -23,6 +25,7 @@
           response.data.tempImage
         );
         isGenerating = true;
+        hasFetched = true;
         isLoading = false;
       })
       .catch((error) => {
@@ -41,15 +44,21 @@
     };
     return newRecipe;
   }
+
+  function reloadPage() {
+    window.location.reload()
+  }
 </script>
 
 <main>
   <form class="form-control text-primary-content" on:submit|preventDefault={generateRecipe}>
-      <label class="block label" for="password">
+    {#if !hasFetched}
+      <label class="block label" for="">
         <span class="label-text">
           Enter a recipe you would like to create!
         </span>
       </label>
+
       <label class="input-group input-group-vertical">
         <span class="label-text">Recipe</span>
         <input
@@ -59,9 +68,13 @@
           bind:value={prompt}
         />
       </label>
+      {/if}
+     
+      {#if hasFetched}
+        <button class="btn btn-square text-center w-full" on:click={reloadPage} >Generate another recipe!</button>
+      {/if}
 
-
-      {#if !isLoading}
+      {#if !hasFetched && !isLoading}
 
           <button type="submit" class="btn w-full mt-5">
             Generate new recipe

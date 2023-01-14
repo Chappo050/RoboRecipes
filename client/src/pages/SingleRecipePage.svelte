@@ -21,17 +21,17 @@ const recipeID: String = window.location.pathname.split('/')[2]
 <main class="pt-10">
   <NavBar />
   {#if recipe}
-    <div class="flex flex-col m-10 border-4 border-accent bg-base-100 ">
-      <h1 class="text-4xl font-bold mb-4 capitalize">{recipe.name}</h1>
+    <div class="flex flex-col m-10 md:border-4 border-accent bg-base-100 ">
+      <h1 class="text-2xl md:text-4xl font-bold mb-4 capitalize">{recipe.name}</h1>
       {#if recipe.imageUrl !== "no_image.png"}
         <img
-          class="w-[300px] rounded-lg shadow-lg h-[300px] mx-auto "
+          class="w-[450px] rounded-lg shadow-lg h-[400px] mx-auto "
           src={recipe.imageUrl}
           alt={recipe.name}
         />
       {:else}
         <img
-          class="w-[300px] rounded-lg shadow-lg h-[300px] mx-auto "
+          class="w-[450px] rounded-lg shadow-lg h-[400px] mx-auto "
           src={noImage}
           alt={recipe.name}
         />
