@@ -2,7 +2,7 @@
   import GenerateButton from "../lib/GenerateButton.svelte";
   import NavBar from "../lib/NavBar.svelte";
   import NewRecipe from "../lib/NewRecipe.svelte";
-  let isGenerating;
+  let hasFetched;
   let recipeData
   import Footer from "../lib/Footer.svelte";
 </script>
@@ -11,10 +11,10 @@
   <NavBar />
 
   <span class="m-1 justify-center">
-    {#if isGenerating}
+    {#if hasFetched}
       <NewRecipe recipe={recipeData} />
     {/if}
-    <GenerateButton bind:isGenerating={isGenerating} bind:recipeData={recipeData}/>
+    <GenerateButton bind:hasFetched={hasFetched} bind:recipeData={recipeData}/>
   </span>
   <Footer/>
 </main>
