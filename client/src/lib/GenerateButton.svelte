@@ -71,7 +71,7 @@
       {/if}
      
       {#if hasFetched}
-        <button class="btn btn-square text-center w-full" on:click={reloadPage} >Generate another recipe!</button>
+        <Link class="btn btn-square text-center w-full" to="/" >Return Home</Link>
       {/if}
 
       {#if !hasFetched && !isLoading}

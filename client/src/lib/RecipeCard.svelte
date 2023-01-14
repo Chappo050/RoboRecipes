@@ -9,6 +9,7 @@
   } from "@rgossiaux/svelte-headlessui";
   import DiAptana from "svelte-icons/di/DiAptana.svelte";
   import axios from "axios";
+  import { Link } from "svelte-routing";
   export let showSettings;
   export let recipe: Recipe;
   export let recipeID;
@@ -97,9 +98,9 @@
           {#each recipe.instructions as step}
             <li class="text-left mt-2">{step}</li>
           {/each}
-          <a href={"/recipe/" + recipeID}>
+          <Link to={"/recipe/" + recipeID}>
             <button class="btn m-5">Full Screen</button>
-          </a>
+          </Link>
         </DisclosurePanel>
       </Transition>
     </Disclosure>
